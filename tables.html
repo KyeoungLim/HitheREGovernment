@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Tables</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/wordcloud@2.51.1/dist/wordcloud2.min.js"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="index.html">HI, theRE Gov BI</a>
+            <!-- Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                            <div class="sb-sidenav-menu-heading">Interface</div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Connection
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="layout-static.html">Complaint Report</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Account
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Authentication
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="login.html">Login</a>
+                                            <a class="nav-link" href="register.html">Register</a>
+                                            <a class="nav-link" href="password.html">Forgot Password</a>
+                                        </nav>
+                                    </div>
+                                </nav>
+                            </div>
+                            <div class="sb-sidenav-menu-heading">Addons</div>
+                            <a class="nav-link" href="charts.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Charts
+                            </a>
+                            <a class="nav-link" href="tables.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Tables
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Logged in as:</div>
+                        Hi, here Manager
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Worker Dataset</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Tables</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                Distribution of foreign workers working in Korea.
+                                Based on this data, foreign worker statistics can be produced by accurately and in real-time.
+                            </div>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                DataTable
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Work</th>
+                                            <th>Division</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Monthly Pay</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Work</th>
+                                            <th>Division</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Monthly Pay</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>Tiger Nixon</td>
+                                            <td>Cleaning man</td>
+                                            <td>Service</td>
+                                            <td>54</td>
+                                            <td>2014/04/25</td>
+                                            <td>$1,760</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Garrett Winters</td>
+                                            <td>Street Cleaner</td>
+                                            <td>Service</td>
+                                            <td>33</td>
+                                            <td>2021/07/25</td>
+                                            <td>$2,237</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ashton Cox</td>
+                                            <td>Farmer</td>
+                                            <td>Agriculture</td>
+                                            <td>30</td>
+                                            <td>2022/01/12</td>
+                                            <td>$2,312</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cedric Kelly</td>
+                                            <td>Senior Care</td>
+                                            <td>Service</td>
+                                            <td>31</td>
+                                            <td>2020/03/29</td>
+                                            <td>$2,310</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Airi Satous</td>
+                                            <td>Metal Worker</td>
+                                            <td>Metal</td>
+                                            <td>27</td>
+                                            <td>2023/11/28</td>
+                                            <td>$1,567</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Brielle Williamson</td>
+                                            <td>Cement Masonry</td>
+                                            <td>Construction</td>
+                                            <td>41</td>
+                                            <td>2012/12/02</td>
+                                            <td>$2,410</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Herrod Chandler</td>
+                                            <td>Reinforcing Bar Placer</td>
+                                            <td>Construction</td>
+                                            <td>37</td>
+                                            <td>2012/08/06</td>
+                                            <td>$2,204</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Rhona Davidson</td>
+                                            <td>Paper Hanger</td>
+                                            <td>Construction</td>
+                                            <td>39</td>
+                                            <td>2014/10/14</td>
+                                            <td>$2,017</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Colleen Hurst</td>
+                                            <td>Farmer</td>
+                                            <td>Agriculture</td>
+                                            <td>27</td>
+                                            <td>2023/09/15</td>
+                                            <td>$1,240</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sonya Frost</td>
+                                            <td>Farmer</td>
+                                            <td>Agriculture</td>
+                                            <td>31</td>
+                                            <td>2021/12/13</td>
+                                            <td>$1,579</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jena Gaines</td>
+                                            <td>Care Worker</td>
+                                            <td>Service</td>
+                                            <td>30</td>
+                                            <td>2019/12/19</td>
+                                            <td>$1,739</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Quinn Flynn</td>
+                                            <td>Reinforcing Bar Placer</td>
+                                            <td>Construction</td>
+                                            <td>28</td>
+                                            <td>2024/03/03</td>
+                                            <td>$2,614</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Charde Marshall</td>
+                                            <td>Kitchen Assistant</td>
+                                            <td>Service</td>
+                                            <td>36</td>
+                                            <td>2018/10/16</td>
+                                            <td>$1,587</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Haley Kennedy</td>
+                                            <td>Mining</td>
+                                            <td>Metal</td>
+                                            <td>43</td>
+                                            <td>2012/12/18</td>
+                                            <td>$2,169</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tatyana Fitzpatrick</td>
+                                            <td>Cleaning Man</td>
+                                            <td>Service</td>
+                                            <td>36</td>
+                                            <td>2020/03/17</td>
+                                            <td>$1,641</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Michael Silva</td>
+                                            <td>Pesticide Insecticide</td>
+                                            <td>Farm</td>
+                                            <td>30</td>
+                                            <td>2021/11/27</td>
+                                            <td>$1,015</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Paul Byrd</td>
+                                            <td>Street Cleaner</td>
+                                            <td>Service</td>
+                                            <td>29</td>
+                                            <td>2023/06/09</td>
+                                            <td>$1,279</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gloria Little</td>
+                                            <td>Delivery and Drop-off</td>
+                                            <td>Service</td>
+                                            <td>39</td>
+                                            <td>2023/04/10</td>
+                                            <td>$1,720</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bradley Greer</td>
+                                            <td>Delivery man</td>
+                                            <td>Service</td>
+                                            <td>24</td>
+                                            <td>2023/10/13</td>
+                                            <td>$1,320</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Dai Rios</td>
+                                            <td>Dish Washing</td>
+                                            <td>Service</td>
+                                            <td>35</td>
+                                            <td>2019/09/26</td>
+                                            <td>$2,035</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jenette Caldwell</td>
+                                            <td>Room Cleaning</td>
+                                            <td>Service</td>
+                                            <td>30</td>
+                                            <td>2022/09/03</td>
+                                            <td>$1,821</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Yuri Berry</td>
+                                            <td>Plastic Manufacturing</td>
+                                            <td>Manufacturing</td>
+                                            <td>40</td>
+                                            <td>2017/06/25</td>
+                                            <td>$2,402</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Caesar Vance</td>
+                                            <td>Cashier</td>
+                                            <td>Service</td>
+                                            <td>34</td>
+                                            <td>2020/12/12</td>
+                                            <td>$1,302</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Doris Wilder</td>
+                                            <td>Reinforcing Bar Placer</td>
+                                            <td>Construction</td>
+                                            <td>30</td>
+                                            <td>2018/09/20</td>
+                                            <td>$2,014</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Angelica Ramos</td>
+                                            <td>Painter</td>
+                                            <td>Construction</td>
+                                            <td>27</td>
+                                            <td>2023/10/09</td>
+                                            <td>$1,273</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gavin Joyce</td>
+                                            <td>Food Serving</td>
+                                            <td>Service</td>
+                                            <td>34</td>
+                                            <td>2023/12/22</td>
+                                            <td>$1,279</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jennifer Chang</td>
+                                            <td>Hard Work</td>
+                                            <td>Construction</td>
+                                            <td>28</td>
+                                            <td>2010/11/14</td>
+                                            <td>$1,681</td>
+        <!--쉬어-->                                </tr>
+                                        <tr>
+                                            <td>Brenden Wagner</td>
+                                            <td>Food Serving</td>
+                                            <td>Service</td>
+                                            <td>24</td>
+                                            <td>2023/06/07</td>
+                                            <td>$1,276</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fiona Green</td>
+                                            <td>Delivery and Drop-off</td>
+                                            <td>San Francisco</td>
+                                            <td>48</td>
+                                            <td>2010/03/11</td>
+                                            <td>$1,800</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Shou Itou</td>
+                                            <td>Glass Manufacturing</td>
+                                            <td>Manufacturing</td>
+                                            <td>26</td>
+                                            <td>2022/08/14</td>
+                                            <td>$1,810</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Michelle House</td>
+                                            <td>Reinforcing Bar Placer</td>
+                                            <td>Construction</td>
+                                            <td>37</td>
+                                            <td>2018/06/02</td>
+                                            <td>$2,103</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Suki Burks</td>
+                                            <td>Food Serving</td>
+                                            <td>Service</td>
+                                            <td>53</td>
+                                            <td>2012/10/22</td>
+                                            <td>$1,951</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Prescott Bartlett</td>
+                                            <td>Metal Cutter</td>
+                                            <td>Metal</td>
+                                            <td>27</td>
+                                            <td>2011/05/07</td>
+                                            <td>$1,450</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Gavin Cortez</td>
+                                            <td>Mining</td>
+                                            <td>Metal</td>
+                                            <td>27</td>
+                                            <td>2023/10/26</td>
+                                            <td>$1,824</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Martena Mccray</td>
+                                            <td>Post-Sales Support</td>
+                                            <td>Service</td>
+                                            <td>46</td>
+                                            <td>2011/03/09</td>
+                                            <td>$3,240</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Unity Butler</td>
+                                            <td>Part Time Job</td>
+                                            <td>Construction</td>
+                                            <td>47</td>
+                                            <td>2018/12/09</td>
+                                            <td>$2,410</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Howard Hatfield</td>
+                                            <td>Glass Manufacturing</td>
+                                            <td>Manufacturing</td>
+                                            <td>31</td>
+                                            <td>2021/12/16</td>
+                                            <td>$2,046</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hope Fuentes</td>
+                                            <td>Secretary</td>
+                                            <td>Service</td>
+                                            <td>41</td>
+                                            <td>2017/02/12</td>
+                                            <td>$1,218</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vivian Harrell</td>
+                                            <td>Secretary</td>
+                                            <td>Service</td>
+                                            <td>38</td>
+                                            <td>2024/02/14</td>
+                                            <td>$1,079</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Timothy Mooney</td>
+                                            <td>Room Cleaning</td>
+                                            <td>Service</td>
+                                            <td>37</td>
+                                            <td>2016/12/11</td>
+                                            <td>$1,831</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jackson Bradshaw</td>
+                                            <td>Plastic Manufacturing</td>
+                                            <td>Manufacturing</td>
+                                            <td>35</td>
+                                            <td>2023/09/26</td>
+                                            <td>$1,437</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Olivia Liang</td>
+                                            <td>Farmer</td>
+                                            <td>Agriculture</td>
+                                            <td>30</td>
+                                            <td>2019/02/03</td>
+                                            <td>$1,145</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bruno Nash</td>
+                                            <td>Farmer</td>
+                                            <td>Agriculture</td>
+                                            <td>38</td>
+                                            <td>2022/05/03</td>
+                                            <td>$1,635</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sakura Yamamoto</td>
+                                            <td>Part Time Job</td>
+                                            <td>Service</td>
+                                            <td>37</td>
+                                            <td>2023/08/19</td>
+                                            <td>$1,295</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Thor Walton</td>
+                                            <td>Metal Cutter</td>
+                                            <td>Metal</td>
+                                            <td>41</td>
+                                            <td>2013/08/11</td>
+                                            <td>$2,072</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Finn Camacho</td>
+                                            <td>Reinforcing Bar Placer</td>
+                                            <td>Construction</td>
+                                            <td>42</td>
+                                            <td>2018/07/07</td>
+                                            <td>$2,301</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Serge Baldwin</td>
+                                            <td>Reinforcing Bar Placer</td>
+                                            <td>Construction</td>
+                                            <td>34</td>
+                                            <td>2021/04/09</td>
+                                            <td>$1,576</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Zenaida Frank</td>
+                                            <td>Room Cleaning</td>
+                                            <td>Service</td>
+                                            <td>32</td>
+                                            <td>2022/01/04</td>
+                                            <td>$1,259</td>
+                                        </tr>
+                                        <tr>
+                                                <td>Taylor Anderson</td>
+                                                <td>Delivery and Drop-off</td>
+                                                <td>Service</td>
+                                                <td>33</td>
+                                                <td>2024/01/04</td>
+                                                <td>$1,837</td>
+                                            </tr>
+                                        <tr>
+                                                <td>Brown Williams</td>
+                                                <td>Plastic Manufacturing</td>
+                                                <td>Manufacturing</td>
+                                                <td>32</td>
+                                                <td>2019/01/04</td>
+                                                <td>$1,953</td>
+                                            </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; HITHERE BUSINESS INTELLIGENCE 2024</div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
+    </body>
+</html>
